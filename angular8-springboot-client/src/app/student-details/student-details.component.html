@@ -1,0 +1,20 @@
+<h2>Информация о ученике</h2> 
+
+<hr/>
+<div *ngIf="student">
+  <div>
+    <label><b>Имя: </b></label> {{student.firstName}}
+  </div>
+  <div>
+    <label><b>Фамилия: </b></label> {{student.lastName}}
+  </div>
+  <div>
+    <label><b>Год поступления: </b></label> {{student.year}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Назад к списку учеников</button><br>
+
+
