@@ -1,4 +1,4 @@
-1.Запустить PostgreSQL и после используйте скрипт который находиться в папке "database".
+1.Запустить PostgreSQL и после используйте скрипт который находиться в папке "springboot2-jpa-crud/database".
 
 2.В файле "application.properties" (путь "src/main/resources")
 
