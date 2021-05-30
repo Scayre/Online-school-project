@@ -58,10 +58,10 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: student; Type: TABLE; Schema: public; Owner: postgres
+-- Name: students; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.student (
+CREATE TABLE public.students (
     id bigint NOT NULL,
     name character varying(100) NOT NULL,
     surname character varying(100) NOT NULL,
@@ -69,14 +69,14 @@ CREATE TABLE public.student (
 );
 
 
-ALTER TABLE public.student OWNER TO postgres;
+ALTER TABLE public.students OWNER TO postgres;
 
 --
 -- Name: students_subjects; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.students_subjects (
-    student_id integer NOT NULL,
+    students_id integer NOT NULL,
     subject_id integer NOT NULL
 );
 
@@ -111,11 +111,11 @@ ALTER TABLE public.subjects ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Data for Name: student; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.student (id, name, surname, receipt_year) VALUES (6, 'Yestay', 'Tastanov', '2019');
-INSERT INTO public.student (id, name, surname, receipt_year) VALUES (7, 'Yerzhigit', 'Myrzabaev', '2019');
+INSERT INTO public.students (id, name, surname, receipt_year) VALUES (6, 'Yestay', 'Tastanov', '2019');
+INSERT INTO public.students (id, name, surname, receipt_year) VALUES (7, 'Yerzhigit', 'Myrzabaev', '2019');
 
 
 --
@@ -145,10 +145,10 @@ SELECT pg_catalog.setval('public.subjects_id_seq', 1, false);
 
 
 --
--- Name: student students_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: students students_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.student
+ALTER TABLE ONLY public.students
     ADD CONSTRAINT students_pk PRIMARY KEY (id);
 
 
@@ -157,7 +157,7 @@ ALTER TABLE ONLY public.student
 --
 
 ALTER TABLE ONLY public.students_subjects
-    ADD CONSTRAINT students_subjects_pk PRIMARY KEY (student_id, subject_id);
+    ADD CONSTRAINT students_subjects_pk PRIMARY KEY (students_id, subject_id);
 
 
 --
@@ -172,14 +172,14 @@ ALTER TABLE ONLY public.subjects
 -- Name: students_id_idx; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE UNIQUE INDEX students_id_idx ON public.student USING btree (id);
+CREATE UNIQUE INDEX students_id_idx ON public.students USING btree (id);
 
 
 --
--- Name: students_subjects_student_id_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: students_subjects_students_id_idx; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE UNIQUE INDEX students_subjects_student_id_idx ON public.students_subjects USING btree (student_id, subject_id);
+CREATE UNIQUE INDEX students_subjects_students_id_idx ON public.students_subjects USING btree (students_id, subject_id);
 
 
 --
@@ -202,7 +202,7 @@ ALTER TABLE ONLY public.students_subjects
 --
 
 ALTER TABLE ONLY public.students_subjects
-    ADD CONSTRAINT students_subjects_fk_1 FOREIGN KEY (student_id) REFERENCES public.student(id) ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT students_subjects_fk_1 FOREIGN KEY (students_id) REFERENCES public.students(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
